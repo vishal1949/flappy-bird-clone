@@ -1,12 +1,8 @@
-import _ from 'lodash';
+const Game = require('./game');
 
-function component() {
-    let element = document.createElement('div');
-
-    // Lodash, currently included via a script, is required for this line to work
-    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-
-    return element;
-}
-
-document.body.appendChild(component());
+window.addEventListener('DOMContentLoaded', () => {
+    window.keysdown = {};
+    new Game();
+    addEventListener("keydown", function (e) { keysdown[e.keyCode] = true })
+    addEventListener("keyup", function (e) { delete keysdown[e.keyCode] })
+})
