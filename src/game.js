@@ -12,7 +12,7 @@ class Game {
         this.pipe = new Pipe();
         this.score = 0;
 
-
+        this.start = this.start.bind(this);
         this.drawGame = this.drawGame.bind(this);
         this.drawBird = this.drawBird.bind(this);
         this.drawPipe = this.drawPipe.bind(this);
@@ -29,6 +29,21 @@ class Game {
     }
 
     drawGame(){
+        this.start();
+        // requestAnimationFrame(() => {
+        //     ctx.clearRect(0, 0, this.width, this.height);
+        //     this.drawGame();
+        //     this.drawBird();
+        //     this.drawPipe();
+        //     this.timer();
+        //     this.collision();
+        // })
+    }
+
+    start(){
+        if(this.gameover === true){
+            cancelAnimationFrame();
+        }
         requestAnimationFrame(() => {
             ctx.clearRect(0, 0, this.width, this.height);
             this.drawGame();
@@ -52,6 +67,8 @@ class Game {
             ((this.bird.y >= this.pipe.downYpos && this.bird.y <= this.pipe.downHeight) ||
             (this.bird.y >= this.pipe.upYpos && this.bird.y <= this.height))){
             this.bird.y = 561;
+            this.gameover=true;
+            alert("Game Over")
         }
     }
 

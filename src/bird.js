@@ -22,6 +22,7 @@ class Bird{
         }
     }
 
+
     takeFlight(){
         this.show();
         window.addEventListener('keypress', e => {
