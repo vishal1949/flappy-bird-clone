@@ -23,8 +23,8 @@ class Game {
     }
     
     drawBird(){
-        this.bird.show();
-        
+        // this.bird.show();
+        this.bird.takeFlight();
         // ctx.drawImage(this.bird.flappybird, this.bird.width, this.bird.height, 40, 40);
 
     }

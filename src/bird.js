@@ -6,10 +6,51 @@ class Bird{
         this.x = 25;
         this.flappyBird = new Image();
         this.flappyBird.src = '../img/flappybirdblue.jpg';
+        this.gravity = .6;
+        this.flight = 1.5;
+        this.velocity = this.gravity
+
+        this.show = this.show.bind(this);
+        this.takeFlight = this.takeFlight.bind(this);
     }
 
+    // keyPressed(){
+    //     window.addEventListener('keypress', e => {
+    //         if(e.keyCode === 32){
+    //             this.takeFlight();
+    //         }
+    //     })
+    // }
+
     show(){
-        ctx.drawImage(this.flappyBird, this.x, this.y, 30, 30);
+        ctx.drawImage(this.flappyBird, this.x, this.y, 50, 50);
+        if( this.y < 560 ){ //that way when the value is 561 we can check
+            this.y += this.velocity;
+            this.velocity += this.gravity;
+        }
+        console.log(this.y);
+    }
+
+    takeFlight(){
+        this.show();
+        window.addEventListener('keypress', e => {
+            if (e.keyCode === 32) {
+                if(this.velocity > -10){
+                    //you can times this.velocity by something less than 1 to add resistatnce 
+                    this.velocity -= this.flight;
+                }
+            }
+            console.log('pressed');
+        })
+        // if (32 in window.keysdown && this.y > 0){
+        //     this.velocity -= this.flight;
+        //     if(this.y < 0){
+        //         this.y = 0;
+        //     }
+        //     console.log(this.velocity);
+        //     // this.y -= this.flight;
+        //     // this.velocity = 0;
+        // }
     }
 }
 
