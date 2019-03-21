@@ -33,7 +33,7 @@ class Game {
 
     start(){
         if(this.gameover === true){
-            alert(`Game Over. You're score is: ${this.score} \nPressR to play again!`)
+            alert(`Game Over. You're score is: ${this.score} \nPress R to play again!`)
             cancelAnimationFrame(this.gameover);
 
         }else{
