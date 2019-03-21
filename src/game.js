@@ -11,7 +11,6 @@ class Game {
         this.bird = new Bird();
         this.pipe = new Pipe();
         this.score = 0;
-
         this.start = this.start.bind(this);
         this.drawGame = this.drawGame.bind(this);
         this.drawBird = this.drawBird.bind(this);
@@ -30,14 +29,6 @@ class Game {
 
     drawGame(){
         this.start();
-        // requestAnimationFrame(() => {
-        //     ctx.clearRect(0, 0, this.width, this.height);
-        //     this.drawGame();
-        //     this.drawBird();
-        //     this.drawPipe();
-        //     this.timer();
-        //     this.collision();
-        // })
     }
 
     start(){
@@ -51,6 +42,9 @@ class Game {
             this.drawPipe();
             this.timer();
             this.collision();
+            ctx.font = "30px Arial";
+            ctx.fillStyle = "red";
+            ctx.fillText(`Score: ${this.score}`, 10, 50);
         })
     }
     
@@ -64,11 +58,11 @@ class Game {
 
     collision(){
         if((this.bird.x + 20 >= this.pipe.xpos - 20)&& 
-            ((this.bird.y >= this.pipe.downYpos && this.bird.y <= this.pipe.downHeight) ||
+            ((this.bird.y >= this.pipe.downYpos && this.bird.y <= this.pipe.downHeight-20) ||
             (this.bird.y >= this.pipe.upYpos && this.bird.y <= this.height))){
             this.bird.y = 561;
             this.gameover=true;
-            alert("Game Over")
+            alert(`Game Over. You're score is: ${this.score}`)
         }
     }
 
