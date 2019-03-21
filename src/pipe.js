@@ -5,9 +5,9 @@ class Pipe{
     constructor(side){
         this.side = side;
         this.upPipe = new Image();
-        this.upPipe.src = 'img/upPipe.jpg';
+        this.upPipe.src = '../img/upPipe.jpg';
         this.downPipe = new Image();
-        this.downPipe.src = 'img/downPipe.png'
+        this.downPipe.src = '../img/downPipe.png'
         this.width = 60;
         this.upHeight = 200;
         this.downHeight = 200;
