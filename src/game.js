@@ -6,16 +6,26 @@ class Game {
     constructor(){
         this.width = 400;
         this.height = 600;
-
+        // this.seconds = new Date().getSeconds();
+        this.gameover = false;
         this.bird = new Bird();
-        this.upPipe = new Pipe();
+        this.pipe = new Pipe();
+        this.score = 0;
 
 
         this.drawGame = this.drawGame.bind(this);
         this.drawBird = this.drawBird.bind(this);
         this.drawPipe = this.drawPipe.bind(this);
-
+        this.timer = this.timer.bind(this);
         this.drawGame();
+    }
+
+    timer(){
+        if(this.pipe.xpos < -50){
+            this.pipe = new Pipe();
+            this.score++;
+            console.log(this.score);
+        }
     }
 
     drawGame(){
@@ -24,18 +34,25 @@ class Game {
             this.drawGame();
             this.drawBird();
             this.drawPipe();
+            this.timer();
+            this.collision();
         })
     }
     
     drawBird(){
-        // this.bird.show();
         this.bird.takeFlight();
-        // ctx.drawImage(this.bird.flappybird, this.bird.width, this.bird.height, 40, 40);
-
     }
 
     drawPipe(){
-        this.upPipe.show();
+        this.pipe.show();
+    }
+
+    collision(){
+        if((this.bird.x + 20 >= this.pipe.xpos - 20)&& 
+            ((this.bird.y >= this.pipe.downYpos && this.bird.y <= this.pipe.downHeight) ||
+            (this.bird.y >= this.pipe.upYpos && this.bird.y <= this.height))){
+            this.bird.y = 561;
+        }
     }
 
 
