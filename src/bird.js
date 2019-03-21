@@ -5,7 +5,7 @@ class Bird{
         this.y = 600/2;
         this.x = 25;
         this.flappyBird = new Image();
-        this.flappyBird.src = 'img/flappybirdblue.jpg';
+        this.flappyBird.src = '../img/flappybirdblue.jpg';
         this.gravity = .6;
         this.flight = 1.5;
         this.start = false;
