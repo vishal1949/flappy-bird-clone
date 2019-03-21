@@ -33,19 +33,22 @@ class Game {
 
     start(){
         if(this.gameover === true){
-            cancelAnimationFrame();
+            alert(`Game Over. You're score is: ${this.score} \nPressR to play again!`)
+            cancelAnimationFrame(this.gameover);
+
+        }else{
+            requestAnimationFrame(() => {
+                ctx.clearRect(0, 0, this.width, this.height);
+                this.drawGame();
+                this.drawBird();
+                this.drawPipe();
+                this.timer();
+                this.collision();
+                ctx.font = "30px Arial";
+                ctx.fillStyle = "red";
+                ctx.fillText(`Score: ${this.score}`, 10, 50);
+            })
         }
-        requestAnimationFrame(() => {
-            ctx.clearRect(0, 0, this.width, this.height);
-            this.drawGame();
-            this.drawBird();
-            this.drawPipe();
-            this.timer();
-            this.collision();
-            ctx.font = "30px Arial";
-            ctx.fillStyle = "red";
-            ctx.fillText(`Score: ${this.score}`, 10, 50);
-        })
     }
     
     drawBird(){
@@ -62,7 +65,6 @@ class Game {
             (this.bird.y >= this.pipe.upYpos && this.bird.y <= this.height))){
             this.bird.y = 561;
             this.gameover=true;
-            alert(`Game Over. You're score is: ${this.score}`)
         }
     }
 
