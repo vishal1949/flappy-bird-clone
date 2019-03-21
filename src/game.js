@@ -62,7 +62,7 @@ class Game {
     collision(){
         if((this.bird.x + 20 >= this.pipe.xpos - 20)&& 
             ((this.bird.y >= this.pipe.downYpos && this.bird.y <= this.pipe.downHeight-20) ||
-            (this.bird.y >= this.pipe.upYpos && this.bird.y <= this.height))){
+            (this.bird.y+10 >= this.pipe.upYpos-30 && this.bird.y <= this.height))){
             this.bird.y = 561;
             this.gameover=true;
         }
