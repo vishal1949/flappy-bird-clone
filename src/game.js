@@ -49,6 +49,7 @@ class Game {
 
     start(){
         if(this.gameover === true){
+                // this.bird.y -= 5;
             alert(`Game Over. You're score is: ${this.score} \nPress R to play again!`)
             cancelAnimationFrame(this.gameover);
 
@@ -77,15 +78,22 @@ class Game {
     }
 
     collision(){
-        if((this.bird.x + 20 >= this.pipe.xpos+20) && 
-            ((this.bird.y +20 >= this.pipe.downYpos-20 && this.bird.y <= this.pipe.downHeight-20) ||
-            (this.bird.y+10 >= this.pipe.upYpos-30 && this.bird.y <= this.height))){
-            this.bird.y = 561;
-            this.gameover=true;
-        }
-        if(this.bird.y < -20){
+        
+        if((this.bird.x + this.bird.width -10 >= this.pipe.xpos && this.bird.x <= this.pipe.xpos + this.pipe.width) && 
+            (this.bird.y <= this.pipe.downHeight - 20 || this.bird.y >= this.pipe.downHeight + this.pipe.gap - 40)
+        ) {
+            // this.bird.y = 561;
             this.gameover = true;
         }
+        // if((this.bird.x + 20 >= this.pipe.xpos+20) && 
+        //     ((this.bird.y +20 >= this.pipe.downYpos-20 && this.bird.y <= this.pipe.downHeight-20) ||
+        //     (this.bird.y+10 >= this.pipe.upYpos-30 && this.bird.y <= this.height))){
+        //     this.bird.y = 561;
+        //     this.gameover=true;
+        // }
+        // if(this.bird.y < -20){
+        //     this.gameover = true;
+        // }
     }
 
 
