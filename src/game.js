@@ -63,7 +63,7 @@ class Game {
                 this.difficulty();
                 ctx.font = "30px Arial";
                 ctx.fillStyle = "red";
-                ctx.fillText(`Score: ${this.score}`, 10, 50);
+                ctx.fillText(`\t\t\t\t\t\t\t\t\t\t\t\t\t\tScore: ${this.score}`, 10, 50);
             })
         }
     }
@@ -78,7 +78,7 @@ class Game {
 
     collision(){
         if((this.bird.x + 20 >= this.pipe.xpos+20) && 
-            ((this.bird.y >= this.pipe.downYpos-20 && this.bird.y <= this.pipe.downHeight-20) ||
+            ((this.bird.y +20 >= this.pipe.downYpos-20 && this.bird.y <= this.pipe.downHeight-20) ||
             (this.bird.y+10 >= this.pipe.upYpos-30 && this.bird.y <= this.height))){
             this.bird.y = 561;
             this.gameover=true;
