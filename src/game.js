@@ -8,27 +8,43 @@ class Game {
         this.height = 600;
         // this.seconds = new Date().getSeconds();
         this.gameover = false;
+        this.difficultyrate = 3;
+
         this.bird = new Bird();
         this.pipe = new Pipe();
         this.score = 0;
+        this.anotherpipe = new Pipe();
         this.start = this.start.bind(this);
         this.drawGame = this.drawGame.bind(this);
         this.drawBird = this.drawBird.bind(this);
         this.drawPipe = this.drawPipe.bind(this);
         this.timer = this.timer.bind(this);
+        this.difficulty = this.difficulty.bind(this);
         this.drawGame();
+
+        this.i = 0;
     }
 
     timer(){
         if(this.pipe.xpos < -50){
             this.pipe = new Pipe();
             this.score++;
-            console.log(this.score);
+            // console.log(this.score);
         }
     }
 
     drawGame(){
         this.start();
+    }
+
+    difficulty(){
+        if(this.score >= this.difficultyrate){
+            this.bird.height += 20;
+            this.bird.width += 20;
+            this.pipe.speed += 2;
+            this.pipe.gap += 5;
+            this.difficultyrate += 2;
+        }
     }
 
     start(){
@@ -44,6 +60,7 @@ class Game {
                 this.drawPipe();
                 this.timer();
                 this.collision();
+                this.difficulty();
                 ctx.font = "30px Arial";
                 ctx.fillStyle = "red";
                 ctx.fillText(`Score: ${this.score}`, 10, 50);
@@ -53,7 +70,6 @@ class Game {
     
     drawBird(){
         this.bird.takeFlight();
-        console.log(this.y);
     }
 
     drawPipe(){
@@ -61,8 +77,8 @@ class Game {
     }
 
     collision(){
-        if((this.bird.x + 20 >= this.pipe.xpos - 20) && 
-            ((this.bird.y >= this.pipe.downYpos && this.bird.y <= this.pipe.downHeight-20) ||
+        if((this.bird.x + 20 >= this.pipe.xpos+20) && 
+            ((this.bird.y >= this.pipe.downYpos-20 && this.bird.y <= this.pipe.downHeight-20) ||
             (this.bird.y+10 >= this.pipe.upYpos-30 && this.bird.y <= this.height))){
             this.bird.y = 561;
             this.gameover=true;

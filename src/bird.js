@@ -8,6 +8,8 @@ class Bird{
         this.flappyBird.src = 'img/flappybirdblue.jpg';
         this.gravity = .6;
         this.flight = 1.5;
+        this.height = 60;
+        this.width = 60;
         this.start = false;
         this.velocity = this.gravity
 
@@ -16,7 +18,7 @@ class Bird{
     }
 
     show(){
-        ctx.drawImage(this.flappyBird, this.x, this.y, 60, 60);
+        ctx.drawImage(this.flappyBird, this.x, this.y, this.width, this.height);
         if(this.start){
             if( this.y < 560 ){ //that way when the value is 561 we can check
                 this.y += this.velocity;
