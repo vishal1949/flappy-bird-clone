@@ -43,7 +43,7 @@ class Game {
             this.bird.width += 20;
             this.pipe.speed += 2;
             this.pipe.gap += 5;
-            this.difficultyrate += 2;
+            this.difficultyrate += 5;
         }
     }
 
