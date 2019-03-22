@@ -64,7 +64,8 @@ class Game {
                 this.difficulty();
                 ctx.font = "30px Arial";
                 ctx.fillStyle = "red";
-                ctx.fillText(`\t\t\t\t\t\t\t\t\t\t\t\t\t\tScore: ${this.score}`, 10, 50);
+                ctx.fillText(`\t\t\t\t\t\t\t\t\t\t\t\t\t\tScore: ${this.score}\n`, 10, 50);
+                ctx.fillText('High Score: 34', 85, 90);
             })
         }
     }
