@@ -1,6 +1,7 @@
 const Bird = require('./bird');
 const Pipe = require('./pipe');
 const ctx = document.getElementById("flappy-canvas").getContext('2d');
+const ctx2 = document.getElementById("score-directions").getContext('2d');
 
 class Game {
     constructor(){
@@ -50,22 +51,26 @@ class Game {
     start(){
         if(this.gameover === true){
                 // this.bird.y -= 5;
-            alert(`Game Over. You're score is: ${this.score} \nPress R to play again!`)
+            // alert(`Game Over. You're score is: ${this.score} \nPress R to play again!`)
             cancelAnimationFrame(this.gameover);
 
         }else{
             requestAnimationFrame(() => {
                 ctx.clearRect(0, 0, this.width, this.height);
+                ctx2.clearRect(0, 0, 400, 600);
                 this.drawGame();
                 this.drawBird();
                 this.drawPipe();
                 this.timer();
                 this.collision();
                 this.difficulty();
-                ctx.font = "30px Arial";
-                ctx.fillStyle = "red";
-                ctx.fillText(`\t\t\t\t\t\t\t\t\t\t\t\t\t\tScore: ${this.score}\n`, 10, 50);
-                ctx.fillText('High Score: 34', 85, 90);
+                ctx2.font = "30px Arial";
+                ctx2.fillStyle = "red";
+                ctx2.fillText(`Score: ${this.score}\n`, 0, 50);
+                ctx2.fillText('High Score: 34', 0, 90);
+                ctx2.fillStyle = "white";
+                ctx2.fillText('R to restart', 0, 130);
+                ctx2.fillText('Spacebar to jump', 0, 170);
             })
         }
     }
@@ -79,22 +84,10 @@ class Game {
     }
 
     collision(){
-        
         if((this.bird.x + this.bird.width -10 >= this.pipe.xpos && this.bird.x <= this.pipe.xpos + this.pipe.width) && 
-            (this.bird.y <= this.pipe.downHeight - 20 || this.bird.y >= this.pipe.downHeight + this.pipe.gap - 40)
-        ) {
-            // this.bird.y = 561;
+            (this.bird.y <= this.pipe.downHeight - 20 || this.bird.y >= this.pipe.downHeight + this.pipe.gap - 40)){
             this.gameover = true;
         }
-        // if((this.bird.x + 20 >= this.pipe.xpos+20) && 
-        //     ((this.bird.y +20 >= this.pipe.downYpos-20 && this.bird.y <= this.pipe.downHeight-20) ||
-        //     (this.bird.y+10 >= this.pipe.upYpos-30 && this.bird.y <= this.height))){
-        //     this.bird.y = 561;
-        //     this.gameover=true;
-        // }
-        // if(this.bird.y < -20){
-        //     this.gameover = true;
-        // }
     }
 
 
