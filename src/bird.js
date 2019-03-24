@@ -38,6 +38,7 @@ class Bird{
                     //you can times this.velocity by something less than 1 to add resistatnce 
                     for( let i = 0; i < this.flight; i++){
                         this.velocity -= 1;
+                        
                     }
                     // this.velocity -= this.flight;
                 }

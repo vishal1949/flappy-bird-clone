@@ -40,8 +40,8 @@ class Game {
 
     difficulty(){
         if(this.score >= this.difficultyrate){
-            this.bird.height += 20;
-            this.bird.width += 20;
+            this.bird.height += 10;
+            this.bird.width += 10;
             this.pipe.speed += 2;
             this.pipe.gap += 5;
             this.difficultyrate += 5;
@@ -58,6 +58,9 @@ class Game {
             requestAnimationFrame(() => {
                 ctx.clearRect(0, 0, this.width, this.height);
                 ctx2.clearRect(0, 0, 400, 600);
+                if(this.score > 2){
+                    
+                }
                 this.drawGame();
                 this.drawBird();
                 this.drawPipe();
@@ -77,6 +80,8 @@ class Game {
     
     drawBird(){
         this.bird.takeFlight();
+
+        
     }
 
     drawPipe(){
@@ -88,6 +93,10 @@ class Game {
             (this.bird.y <= this.pipe.downHeight - 20 || this.bird.y >= this.pipe.downHeight + this.pipe.gap - 40)){
             this.gameover = true;
         }
+    }
+
+    ai(){
+
     }
 
 
