@@ -13,8 +13,9 @@ class Game {
 
         this.bird = new Bird();
         this.pipe = new Pipe();
+        this.secondPipe = new Pipe();
         this.score = 0;
-        this.anotherpipe = new Pipe();
+        this.anotherpipe = null;
         this.start = this.start.bind(this);
         this.drawGame = this.drawGame.bind(this);
         this.drawBird = this.drawBird.bind(this);
@@ -50,8 +51,6 @@ class Game {
 
     start(){
         if(this.gameover === true){
-                // this.bird.y -= 5;
-            // alert(`Game Over. You're score is: ${this.score} \nPress R to play again!`)
             cancelAnimationFrame(this.gameover);
 
         }else{
