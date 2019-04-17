@@ -11,7 +11,18 @@
         }
         canvas#flappy-canvas{
             background-image: url("http://is2.mzstatic.com/image/thumb/Purple49/v4/3b/79/d5/3b79d557-8cf5-7889-8605-7119760670be/source/512x512bb.jpg")
-        }        
+        }       
+
+        #new-game{
+            padding: 50px 13px;
+            position: absolute;
+            margin-left: 12%;
+            margin-top: 23%;
+            background-color: black;
+            color: white;
+        } 
+
+        
     </style>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138162450-2"></script>
@@ -28,6 +39,7 @@
 </head>
 
 <body>
+    <div id='new-game'>  To start a new game press 'N' </div>
     <canvas id='flappy-canvas' height='600' width='400'></canvas>
     <canvas id='score-directions' height='600' width='400'></canvas>
     <script src="main.js"></script>

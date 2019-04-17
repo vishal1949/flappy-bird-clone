@@ -115,7 +115,7 @@ eval("const Bird = __webpack_require__(/*! ./bird */ \"./src/bird.js\");\nconst 
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const Game = __webpack_require__(/*! ./game */ \"./src/game.js\");\n\nwindow.addEventListener('DOMContentLoaded', () => {\n    window.keysdown = {};\n    new Game();\n    window.addEventListener('keydown', (e) => {\n        if (e.keyCode === 82) {\n            new Game()\n        }\n    })\n    addEventListener(\"keydown\", function (e) { keysdown[e.keyCode] = true })\n    addEventListener(\"keyup\", function (e) { delete keysdown[e.keyCode] })\n})\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const Game = __webpack_require__(/*! ./game */ \"./src/game.js\");\n\nwindow.addEventListener('DOMContentLoaded', () => {\n\n    window.addEventListener('keydown', (e) => {\n        if(e.keyCode === 78){\n            let div = document.getElementById('new-game');\n            div.style.display = 'none';\n            new Game();\n        }\n    })\n    window.addEventListener('keydown', (e) => {\n        if (e.keyCode === 82) {\n            new Game()\n        }\n    });\n    // addEventListener(\"keydown\", function (e) { keysdown[e.keyCode] = true })\n    // addEventListener(\"keyup\", function (e) { delete keysdown[e.keyCode] })\n})\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
